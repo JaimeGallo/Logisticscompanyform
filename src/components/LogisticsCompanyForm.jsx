@@ -490,25 +490,59 @@ export default function LogisticsCompanyForm() {
         formVersion: '1.0'
       };
 
-      // Preparar datos para Formspree
+      // Preparar datos para Formspree con formato más legible
       const formDataToSend = new FormData();
       
-      // Campos principales para el email
-      formDataToSend.append('_subject', `Nuevo formulario: ${formData.commercialName || 'Empresa'}`);
-      formDataToSend.append('_replyto', formData.generalEmail || API_CONFIG.RECIPIENT_EMAIL);
-      formDataToSend.append('empresa', formData.commercialName || 'Sin nombre');
-      formDataToSend.append('email', formData.generalEmail || 'Sin email');
-      formDataToSend.append('telefono', formData.mainPhone || 'Sin teléfono');
+      // Asunto claro y descriptivo
+      const subject = formData.commercialName 
+        ? `Nuevo Formulario: ${formData.commercialName}`
+        : 'Nuevo Formulario de Empresa Logística';
+      formDataToSend.append('_subject', subject);
       
-      // Todos los datos completos como JSON string
-      formDataToSend.append('datos_completos', JSON.stringify(payload, null, 2));
+      // Validar y usar email real (no de ejemplo)
+      const isValidEmail = (email) => {
+        if (!email) return false;
+        // Rechazar emails de ejemplo
+        const exampleEmails = ['ejemplo.com', 'example.com', 'test.com', 'demo.com', 'sample.com'];
+        const emailDomain = email.split('@')[1]?.toLowerCase();
+        return emailDomain && !exampleEmails.some(ex => emailDomain.includes(ex)) && email.includes('@');
+      };
       
-      // También enviar campos importantes individualmente para facilitar lectura
-      formDataToSend.append('nit', formData.nit || '');
-      formDataToSend.append('ciudad', formData.city || '');
-      formDataToSend.append('pais', formData.country || '');
-      formDataToSend.append('servicios', formData.services.length.toString());
-      formDataToSend.append('testimonios', formData.testimonials.length.toString());
+      // Solo agregar _replyto si el email es válido y real
+      const generalEmail = formData.generalEmail?.trim();
+      if (isValidEmail(generalEmail)) {
+        formDataToSend.append('_replyto', generalEmail);
+      } else if (isValidEmail(API_CONFIG.RECIPIENT_EMAIL) && API_CONFIG.RECIPIENT_EMAIL !== 'tu-email@ejemplo.com') {
+        formDataToSend.append('_replyto', API_CONFIG.RECIPIENT_EMAIL);
+      }
+      // Si no hay email válido, no agregamos _replyto (Formspree usará el email de la cuenta)
+      
+      // Información básica en campos individuales (más legible, menos spam)
+      formDataToSend.append('Empresa', formData.commercialName || 'No especificado');
+      formDataToSend.append('Nombre Legal', formData.legalName || 'No especificado');
+      formDataToSend.append('NIT', formData.nit || 'No especificado');
+      // Solo mostrar email si es válido
+      const displayEmail = isValidEmail(generalEmail) ? generalEmail : 'No especificado';
+      formDataToSend.append('Email', displayEmail);
+      formDataToSend.append('Teléfono', formData.mainPhone || 'No especificado');
+      formDataToSend.append('WhatsApp', formData.whatsapp || 'No especificado');
+      formDataToSend.append('Ciudad', formData.city || 'No especificado');
+      formDataToSend.append('País', formData.country || 'No especificado');
+      formDataToSend.append('Dirección', formData.mainAddress || 'No especificado');
+      formDataToSend.append('Año Fundación', formData.foundationYear || 'No especificado');
+      formDataToSend.append('Años Experiencia', formData.experienceYears || 'No especificado');
+      formDataToSend.append('Número Empleados', formData.employeeCount || 'No especificado');
+      formDataToSend.append('Slogan', formData.slogan || 'No especificado');
+      
+      // Resumen de contenido
+      formDataToSend.append('Servicios Registrados', formData.services.length.toString());
+      formDataToSend.append('Testimonios', `${formData.testimonials.length} de 3 mínimos`);
+      formDataToSend.append('FAQs', formData.faqs.length.toString());
+      formDataToSend.append('Regiones de Origen', formData.originRegions.join(', ') || 'Ninguna');
+      formDataToSend.append('Ciudades Colombia', formData.colombianCities.length.toString());
+      
+      // Datos completos como JSON (al final, menos visible)
+      formDataToSend.append('Datos Completos JSON', JSON.stringify(payload, null, 2));
 
       // Crear un timeout para evitar que se quede colgado
       const controller = new AbortController();
