@@ -577,7 +577,7 @@ export default function LogisticsCompanyForm() {
     if (!formData.vision) missing.push('Visión');
     if (formData.services.length === 0) missing.push('Servicios');
     if (formData.testimonials.length < 3) missing.push('Testimonios (mín. 3)');
-    if (!formData.heroTitle) missing.push('Título Hero');
+    if (!formData.heroTitle) missing.push('Mensaje Principal');
     return missing;
   };
 
@@ -1403,15 +1403,16 @@ export default function LogisticsCompanyForm() {
       case 8:
         return (
           <div className="space-y-6 animate-fadeIn">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">FAQ y Contenido Hero</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">FAQ y Mensaje Principal</h2>
             
             <div className="border-b pb-6">
               <h3 className="text-lg font-semibold text-gray-700 mb-4">
-                Contenido Hero Principal <span className="text-red-500">*</span>
+                Mensaje Principal de la Página <span className="text-red-500">*</span>
+                <span className="text-sm font-normal text-gray-500 ml-2">(El texto grande que verán los visitantes al entrar a tu página)</span>
               </h3>
               
               <FormInput
-                label="Título Principal Hero"
+                label="Título Principal"
                 required
                 value={formData.heroTitle}
                 onChange={(e) => updateField('heroTitle', e.target.value)}
@@ -1419,10 +1420,11 @@ export default function LogisticsCompanyForm() {
                 maxLength={80}
                 charCount
                 error={errors.heroTitle}
+                tooltip="Este será el mensaje principal que aparecerá destacado en la parte superior de tu página web"
               />
               
               <FormInput
-                label="Subtítulo Hero"
+                label="Descripción o Subtítulo"
                 required
                 value={formData.heroSubtitle}
                 onChange={(e) => updateField('heroSubtitle', e.target.value)}
@@ -1430,12 +1432,13 @@ export default function LogisticsCompanyForm() {
                 maxLength={150}
                 charCount
                 error={errors.heroSubtitle}
+                tooltip="Una descripción breve que complementa el título principal"
               />
               
               {/* Preview del Hero */}
               {(formData.heroTitle || formData.heroSubtitle) && (
                 <div className="mt-4 bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-8 text-white">
-                  <p className="text-xs uppercase tracking-wider mb-2 opacity-70">Preview del Hero</p>
+                  <p className="text-xs uppercase tracking-wider mb-2 opacity-70">Así se verá en tu página</p>
                   <h1 className="text-2xl md:text-3xl font-bold mb-2">
                     {formData.heroTitle || 'Tu título aquí...'}
                   </h1>
@@ -1690,7 +1693,7 @@ export default function LogisticsCompanyForm() {
                   </button>
                 </div>
                 <div className="text-sm">
-                  <div><span className="text-gray-500">Hero:</span> {formData.heroTitle ? 'Configurado' : 'Pendiente'}</div>
+                  <div><span className="text-gray-500">Mensaje Principal:</span> {formData.heroTitle ? 'Configurado' : 'Pendiente'}</div>
                   <div><span className="text-gray-500">FAQs:</span> {formData.faqs.length}</div>
                 </div>
               </div>
