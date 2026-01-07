@@ -490,31 +490,55 @@ export default function LogisticsCompanyForm() {
         formVersion: '1.0'
       };
 
-      // Enviar a Formspree o endpoint personalizado
+      // Preparar datos para Formspree
+      const formDataToSend = new FormData();
+      
+      // Campos principales para el email
+      formDataToSend.append('_subject', `Nuevo formulario: ${formData.commercialName || 'Empresa'}`);
+      formDataToSend.append('_replyto', formData.generalEmail || API_CONFIG.RECIPIENT_EMAIL);
+      formDataToSend.append('empresa', formData.commercialName || 'Sin nombre');
+      formDataToSend.append('email', formData.generalEmail || 'Sin email');
+      formDataToSend.append('telefono', formData.mainPhone || 'Sin teléfono');
+      
+      // Todos los datos completos como JSON string
+      formDataToSend.append('datos_completos', JSON.stringify(payload, null, 2));
+      
+      // También enviar campos importantes individualmente para facilitar lectura
+      formDataToSend.append('nit', formData.nit || '');
+      formDataToSend.append('ciudad', formData.city || '');
+      formDataToSend.append('pais', formData.country || '');
+      formDataToSend.append('servicios', formData.services.length.toString());
+      formDataToSend.append('testimonios', formData.testimonials.length.toString());
+
+      // Crear un timeout para evitar que se quede colgado
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 segundos timeout
+
+      // Enviar a Formspree
       const response = await fetch(API_CONFIG.API_ENDPOINT, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          // Formato para Formspree
-          _subject: `Nuevo formulario: ${formData.commercialName || 'Empresa'}`,
-          _replyto: formData.generalEmail || API_CONFIG.RECIPIENT_EMAIL,
-          empresa: formData.commercialName,
-          email: formData.generalEmail,
-          telefono: formData.mainPhone,
-          datos_completos: JSON.stringify(payload, null, 2),
-          // También enviar como JSON estructurado
-          formData: payload
-        })
+        body: formDataToSend,
+        signal: controller.signal
       });
 
+      clearTimeout(timeoutId);
+
       if (!response.ok) {
-        throw new Error(`Error al enviar: ${response.statusText}`);
+        const errorText = await response.text();
+        throw new Error(`Error al enviar: ${response.status} ${response.statusText}. ${errorText}`);
       }
 
-      const result = await response.json();
+      // Formspree puede responder con JSON o HTML
+      let result;
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        result = await response.json();
+      } else {
+        // Si no es JSON, asumimos que fue exitoso
+        result = { ok: true };
+      }
+
+      setSending(false);
       setSent(true);
       
       // También descargar el JSON localmente
@@ -527,8 +551,17 @@ export default function LogisticsCompanyForm() {
 
     } catch (error) {
       console.error('Error al enviar datos:', error);
-      setSendError(error.message || 'Error al enviar los datos. Por favor, intenta descargar la copia manualmente.');
+      
+      if (error.name === 'AbortError') {
+        setSendError('El envío está tardando demasiado. Por favor, intenta descargar la copia manualmente.');
+      } else {
+        setSendError(error.message || 'Error al enviar los datos. Por favor, intenta descargar la copia manualmente.');
+      }
+      
       setSending(false);
+      
+      // Aún así, descargar el JSON localmente como respaldo
+      exportJSON();
     }
   };
 
