@@ -94,6 +94,7 @@ El proyecto incluye `vercel.json` con la configuración necesaria:
 ├── src/
 │   ├── components/
 │   │   └── LogisticsCompanyForm.jsx  # Componente principal
+│   ├── config.js                      # Configuración de API/envío
 │   ├── App.jsx                        # Componente raíz
 │   ├── main.jsx                       # Punto de entrada
 │   └── index.css                      # Estilos globales (Tailwind)
@@ -103,6 +104,7 @@ El proyecto incluye `vercel.json` con la configuración necesaria:
 ├── tailwind.config.js                 # Configuración de Tailwind
 ├── postcss.config.js                  # Configuración de PostCSS
 ├── vercel.json                        # Configuración de Vercel
+├── .env.example                       # Ejemplo de variables de entorno
 └── README.md                          # Este archivo
 ```
 
@@ -123,13 +125,71 @@ El proyecto incluye `vercel.json` con la configuración necesaria:
 6. **Paso 6 - Testimonios**: Testimonios de clientes (mínimo 3)
 7. **Paso 7 - Estadísticas**: Métricas y diferenciadores
 8. **Paso 8 - FAQ y Contenido**: Preguntas frecuentes y contenido hero
-9. **Paso 9 - Revisión**: Revisión completa y exportación
+9. **Paso 9 - Revisión**: Revisión completa, envío automático y exportación
+
+### Flujo de Envío
+
+Cuando el cliente completa el formulario:
+1. **Revisa** toda la información en el paso 9
+2. **Hace clic en "Enviar y Exportar"**
+3. Los datos se envían automáticamente a tu endpoint configurado
+4. También se descarga el archivo JSON localmente
+5. Recibes una confirmación de éxito
 
 ## 💾 Guardado de Datos
 
 - Los datos se guardan automáticamente en `localStorage` del navegador
 - Si el usuario cierra la página, puede restaurar su progreso
 - Los datos se exportan como JSON al finalizar
+- **Envío automático**: Los datos se envían automáticamente a tu endpoint configurado
+
+## 📧 Configuración de Envío Automático
+
+El formulario incluye envío automático de datos. Tienes varias opciones:
+
+### Opción 1: Formspree (Recomendado - Gratis)
+
+1. **Regístrate en [Formspree](https://formspree.io)** (gratis hasta 50 envíos/mes)
+2. **Crea un nuevo formulario** y copia tu Form ID
+3. **Crea un archivo `.env`** en la raíz del proyecto:
+   ```env
+   VITE_API_ENDPOINT=https://formspree.io/f/TU_FORM_ID_AQUI
+   VITE_RECIPIENT_EMAIL=tu-email@ejemplo.com
+   ```
+4. **Reconstruye el proyecto**:
+   ```bash
+   npm run build
+   ```
+
+### Opción 2: API Personalizada
+
+1. **Crea un endpoint** en tu servidor que acepte POST requests
+2. **Configura el archivo `.env`**:
+   ```env
+   VITE_API_ENDPOINT=https://tu-api.com/api/formulario
+   ```
+3. **Tu endpoint debe aceptar JSON** con la estructura del formulario
+
+### Opción 3: Webhook (Zapier, Make, etc.)
+
+1. **Crea un webhook** en tu plataforma preferida
+2. **Configura el archivo `.env`**:
+   ```env
+   VITE_API_ENDPOINT=https://hooks.zapier.com/hooks/catch/TU_WEBHOOK_ID
+   ```
+
+### Configuración Manual
+
+Si prefieres configurar directamente en el código, edita `src/config.js`:
+
+```javascript
+export const API_CONFIG = {
+  API_ENDPOINT: 'https://formspree.io/f/TU_FORM_ID',
+  RECIPIENT_EMAIL: 'tu-email@ejemplo.com'
+};
+```
+
+**Nota**: Después de cambiar la configuración, debes reconstruir el proyecto con `npm run build`.
 
 ## 🔧 Personalización
 

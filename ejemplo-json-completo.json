@@ -1,0 +1,194 @@
+{
+  "legalName": "Logística Global Express S.A.S.",
+  "commercialName": "LogiGlobal Express",
+  "nit": "900.123.456-7",
+  "foundationYear": "2010",
+  "experienceYears": "14",
+  "employeeCount": "250",
+  "operatingCountries": "Colombia, Panamá, Ecuador, Perú, Chile, Brasil",
+  "slogan": "Conectamos tu negocio con el mundo de manera eficiente y segura",
+  "mainAddress": "Calle 100 #45-67, Oficina 301, Torre Empresarial",
+  "city": "Bogotá",
+  "country": "Colombia",
+  "mainPhone": "+57 601 123 4567",
+  "whatsapp": "+57 310 123 4567",
+  "generalEmail": "info@logiglobalexpress.com",
+  "quotationEmail": "cotizaciones@logiglobalexpress.com",
+  "businessHours": "Lunes a Viernes 8:00 AM - 6:00 PM, Sábados 9:00 AM - 1:00 PM",
+  "facebook": "https://facebook.com/logiglobalexpress",
+  "instagram": "https://instagram.com/logiglobalexpress",
+  "linkedin": "https://linkedin.com/company/logiglobalexpress",
+  "twitter": "https://twitter.com/logiglobalexp",
+  "history": "LogiGlobal Express fue fundada en 2010 con la visión de revolucionar el sector logístico en Colombia. Comenzamos como una pequeña empresa familiar especializada en transporte nacional, y gracias a nuestro compromiso con la excelencia y la innovación, hemos crecido hasta convertirnos en una de las empresas líderes en logística internacional. A lo largo de nuestros 14 años de experiencia, hemos expandido nuestras operaciones a 6 países de la región, manejando más de 5,000 contenedores anuales y sirviendo a más de 500 clientes activos. Nuestro éxito se basa en tres pilares fundamentales: tecnología de punta, personal altamente capacitado y un enfoque centrado en el cliente.",
+  "mission": "Proporcionar soluciones logísticas integrales de clase mundial que conecten a nuestros clientes con mercados globales, garantizando eficiencia, seguridad y confiabilidad en cada envío, mientras contribuimos al crecimiento del comercio internacional.",
+  "vision": "Ser la empresa de logística internacional más confiable y reconocida de Latinoamérica para el año 2030, destacándonos por nuestra innovación tecnológica, sostenibilidad y excelencia en el servicio al cliente.",
+  "values": [
+    "Excelencia",
+    "Integridad",
+    "Innovación",
+    "Compromiso con el cliente"
+  ],
+  "certifications": [
+    "ISO 9001:2015",
+    "ISO 14001:2015",
+    "OEA (Operador Económico Autorizado)"
+  ],
+  "milestones": [
+    {
+      "year": "2010",
+      "description": "Fundación de la empresa en Bogotá"
+    },
+    {
+      "year": "2015",
+      "description": "Expansión a Panamá y Ecuador"
+    },
+    {
+      "year": "2018",
+      "description": "Certificación ISO 9001:2015"
+    },
+    {
+      "year": "2020",
+      "description": "Alcanzamos 500 clientes activos"
+    },
+    {
+      "year": "2022",
+      "description": "Apertura de oficinas en Perú y Chile"
+    }
+  ],
+  "services": [
+    {
+      "name": "Transporte Marítimo FCL",
+      "shortDescription": "Envío de contenedores completos desde y hacia cualquier puerto del mundo",
+      "fullDescription": "Ofrecemos servicios de transporte marítimo de contenedores completos (FCL) con cobertura global. Gestionamos todo el proceso desde la recolección hasta la entrega final, incluyendo documentación, trámites aduaneros y seguimiento en tiempo real.",
+      "transitTime": "25-35 días",
+      "coverage": "Asia - Sudamérica, Europa - Sudamérica, Norteamérica - Sudamérica",
+      "features": [
+        "Seguimiento en tiempo real",
+        "Seguro de carga incluido",
+        "Asesoría aduanera",
+        "Almacenamiento temporal"
+      ]
+    },
+    {
+      "name": "Transporte Marítimo LCL",
+      "shortDescription": "Consolidación de carga para envíos menores a un contenedor completo",
+      "fullDescription": "Ideal para empresas que no requieren un contenedor completo. Consolidamos su carga con la de otros clientes, optimizando costos y tiempos. Servicio puerta a puerta disponible.",
+      "transitTime": "30-40 días",
+      "coverage": "Todas las rutas principales",
+      "features": [
+        "Consolidación eficiente",
+        "Ahorro de costos",
+        "Flexibilidad en volúmenes",
+        "Servicio puerta a puerta"
+      ]
+    },
+    {
+      "name": "Transporte Aéreo",
+      "shortDescription": "Envíos urgentes y de alto valor por vía aérea",
+      "fullDescription": "Solución rápida para envíos urgentes o mercancías de alto valor. Contamos con acuerdos preferenciales con las principales aerolíneas internacionales.",
+      "transitTime": "3-7 días",
+      "coverage": "Global",
+      "features": [
+        "Entrega express",
+        "Manejo de carga valiosa",
+        "Seguimiento detallado",
+        "Servicio 24/7"
+      ]
+    }
+  ],
+  "originRegions": [
+    "Asia",
+    "Europa",
+    "Norteamérica"
+  ],
+  "specificCountries": {
+    "Asia": [
+      "China",
+      "Japón",
+      "Corea del Sur",
+      "India",
+      "Vietnam"
+    ],
+    "Europa": [
+      "Alemania",
+      "España",
+      "Francia",
+      "Italia",
+      "Países Bajos"
+    ],
+    "Norteamérica": [
+      "Estados Unidos",
+      "Canadá",
+      "México"
+    ]
+  },
+  "colombianCities": [
+    "Bogotá",
+    "Medellín",
+    "Cali",
+    "Barranquilla",
+    "Cartagena",
+    "Bucaramanga"
+  ],
+  "testimonials": [
+    {
+      "clientName": "María González",
+      "position": "Gerente de Importaciones",
+      "company": "Textiles del Sur S.A.",
+      "industry": "Textil",
+      "text": "LogiGlobal Express ha sido nuestro socio logístico durante 5 años. Su profesionalismo y atención al detalle nos han permitido optimizar nuestros tiempos de importación desde China. El seguimiento en tiempo real es excepcional.",
+      "rating": 5,
+      "authorized": true
+    },
+    {
+      "clientName": "Carlos Ramírez",
+      "position": "Director de Operaciones",
+      "company": "Autopartes Andinas",
+      "industry": "Automotriz",
+      "text": "Excelente servicio. Hemos reducido nuestros tiempos de tránsito en un 20% trabajando con ellos. Su equipo siempre está disponible para resolver cualquier inconveniente.",
+      "rating": 5,
+      "authorized": true
+    },
+    {
+      "clientName": "Ana Martínez",
+      "position": "CEO",
+      "company": "Retail Internacional",
+      "industry": "Retail",
+      "text": "La confiabilidad de LogiGlobal Express es impresionante. Llevamos 3 años sin un solo retraso significativo. Su sistema de seguimiento nos permite planificar mejor nuestros inventarios.",
+      "rating": 5,
+      "authorized": true
+    }
+  ],
+  "containersPerYear": "5000",
+  "activeClients": "500",
+  "coverageCountries": "45",
+  "onTimeDeliveryRate": "98%",
+  "differentiators": [
+    "Tecnología de seguimiento en tiempo real",
+    "Equipo de expertos en comercio exterior",
+    "Red de agentes en los principales puertos",
+    "Procesos certificados ISO",
+    "Atención personalizada 24/7"
+  ],
+  "faqs": [
+    {
+      "question": "¿Cuánto tiempo tarda un envío desde China?",
+      "answer": "El tiempo de tránsito desde China depende del puerto de origen y destino. En promedio, un envío marítimo FCL tarda entre 25-35 días, mientras que LCL puede tardar 30-40 días. Para envíos aéreos, el tiempo es de 3-7 días."
+    },
+    {
+      "question": "¿Qué documentación necesito para importar?",
+      "answer": "Los documentos básicos incluyen: factura comercial, lista de empaque, conocimiento de embarque (Bill of Lading), certificados de origen, y dependiendo del producto, pueden requerirse certificados sanitarios, fitosanitarios o de calidad. Nuestro equipo te asesora en todo el proceso."
+    },
+    {
+      "question": "¿Ofrecen seguro de carga?",
+      "answer": "Sí, ofrecemos seguros de carga con cobertura completa. El seguro puede incluirse en el servicio o contratarse por separado según las necesidades del cliente."
+    },
+    {
+      "question": "¿Cómo puedo hacer seguimiento a mi envío?",
+      "answer": "Proporcionamos una plataforma en línea donde puedes hacer seguimiento en tiempo real de tu envío. También recibirás actualizaciones por email y WhatsApp en cada etapa del proceso."
+    }
+  ],
+  "heroTitle": "Conectamos tu negocio con el mundo",
+  "heroSubtitle": "Soluciones logísticas integrales para importación y exportación con la confiabilidad que tu empresa necesita"
+}
+
