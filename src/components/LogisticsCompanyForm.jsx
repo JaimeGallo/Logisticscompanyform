@@ -459,7 +459,7 @@ export default function LogisticsCompanyForm() {
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `${formData.commercialName || 'empresa'}_data.json`;
+    link.download = `${formData.commercialName || 'empresa'}_datos.json`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -527,7 +527,7 @@ export default function LogisticsCompanyForm() {
 
     } catch (error) {
       console.error('Error al enviar datos:', error);
-      setSendError(error.message || 'Error al enviar los datos. Por favor, intenta exportar el JSON manualmente.');
+      setSendError(error.message || 'Error al enviar los datos. Por favor, intenta descargar la copia manualmente.');
       setSending(false);
     }
   };
@@ -1704,7 +1704,7 @@ export default function LogisticsCompanyForm() {
                   <div>
                     <h4 className="font-medium text-green-800">¡Datos enviados exitosamente!</h4>
                     <p className="text-sm text-green-700 mt-1">
-                      Los datos han sido enviados y también se ha descargado el archivo JSON.
+                      Los datos han sido enviados exitosamente y también se ha descargado una copia de seguridad.
                     </p>
                   </div>
                 </div>
@@ -1757,7 +1757,7 @@ export default function LogisticsCompanyForm() {
                 onClick={exportJSON}
                 className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl font-medium transition-colors"
               >
-                <Icons.Download /> Solo Exportar JSON
+                <Icons.Download /> Descargar Copia
               </button>
               <button
                 onClick={copyToClipboard}
