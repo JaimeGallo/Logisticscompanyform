@@ -521,9 +521,15 @@ export default function LogisticsCompanyForm() {
       formDataToSend.append('Empresa', formData.commercialName || 'No especificado');
       formDataToSend.append('Nombre Legal', formData.legalName || 'No especificado');
       formDataToSend.append('NIT', formData.nit || 'No especificado');
-      // Solo mostrar email si es válido
-      const displayEmail = isValidEmail(generalEmail) ? generalEmail : 'No especificado';
-      formDataToSend.append('Email', displayEmail);
+      // Formspree exige que el campo "email" sea un email válido (no texto como "No especificado").
+      const emailValido = isValidEmail(generalEmail)
+        ? generalEmail
+        : (API_CONFIG.RECIPIENT_EMAIL && API_CONFIG.RECIPIENT_EMAIL !== 'tu-email@ejemplo.com' && isValidEmail(API_CONFIG.RECIPIENT_EMAIL)
+          ? API_CONFIG.RECIPIENT_EMAIL
+          : null);
+      if (emailValido) {
+        formDataToSend.append('email', emailValido);
+      }
       formDataToSend.append('Teléfono', formData.mainPhone || 'No especificado');
       formDataToSend.append('WhatsApp', formData.whatsapp || 'No especificado');
       formDataToSend.append('Ciudad', formData.city || 'No especificado');

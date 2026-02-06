@@ -5,13 +5,19 @@ Los envíos aparecen en Formspree pero están en la carpeta "Spam" y no llegan a
 
 ## Soluciones
 
-### 1. Verificar tu Email en Formspree (MÁS IMPORTANTE)
+### 1. Configurar Email de Destino (MÁS IMPORTANTE)
 
-1. Ve a [Formspree Dashboard](https://formspree.io/forms/xdakqkyg/settings)
-2. En la sección **"Email Notifications"**, verifica que:
-   - Tu email esté verificado (debe tener un check verde)
-   - Si no está verificado, busca el email de verificación en tu bandeja
-   - Haz clic en el enlace de verificación
+El email de destino se configura en el **Template**. Sigue estos pasos:
+
+1. Ve a [Formspree Settings](https://formspree.io/forms/xdakqkyg/settings)
+2. En la sección **"Processing"** → **"Template"**:
+   - Haz clic en **"Submission template"**
+   - Si no tienes un template, crea uno nuevo
+   - En el template, configura el **email de destino** donde quieres recibir los envíos
+3. **Alternativa**: El email también se configura en tu cuenta de Formspree:
+   - Ve a tu perfil/account settings
+   - Verifica que el email de tu cuenta sea el correcto
+   - Formspree enviará los emails a ese email por defecto
 
 ### 2. Mover envíos de Spam a Inbox
 
@@ -28,11 +34,13 @@ Los envíos aparecen en Formspree pero están en la carpeta "Spam" y no llegan a
 
 ### 4. Verificar Configuración de Email
 
-1. Ve a **Settings** → **Email Notifications**
-2. Asegúrate de que:
-   - El email de destino esté correcto
-   - Las notificaciones estén activadas
-   - Revisa la carpeta de spam de tu email también
+1. Ve a **Settings** → **Template** (Submission template)
+2. Verifica que el template tenga configurado el email de destino correcto
+3. También verifica el email de tu cuenta de Formspree:
+   - Haz clic en tu nombre (arriba a la derecha) → **Account Settings**
+   - Verifica que el email de tu cuenta sea el correcto
+   - Asegúrate de haber verificado ese email (debe tener un check verde)
+4. Revisa la carpeta de spam de tu email también
 
 ### 5. Mejorar el Formato del Envío
 
